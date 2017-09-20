@@ -1,0 +1,630 @@
+
+
+<html>
+	<head>
+		<title>HashLink - Haxe Virtual Machine</title>
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="https://netdna.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.css">
+		<link rel="stylesheet" type="text/css" href="http://haxe.org/css/bootstrap.min.css"/>
+		<link rel="stylesheet" type="text/css" href="https://haxe.org/css/haxe-nav.css"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="HashLink is a virtual machine for Haxe, created and supported by Haxe Foundation." ::cond currentPage.description != null:: />
+		<!-- Twitter Card data -->
+		<meta name="twitter:creator" content="@haxe_org"/>
+
+		<!-- Open Graph data -->
+		<meta property="og:title" content="HashLink - Haxe Virtual Machine" />
+		<meta property="og:description" content="HashLink is a virtual machine for Haxe, created and supported by Haxe Foundation." />
+		<meta property="og:type" content="article" />
+		<meta property="og:url" content="http://hashlink.haxe.org/" />
+		<meta property="og:image" content="http://hashlink.haxe.org/share.png" />
+		<meta property="article:publisher" content="haxe.org" />
+		<meta property="article:section " content="technology" />
+
+	</head>
+	<body>
+
+<style>
+body, p {
+	margin : 0;
+	padding : 0;
+	font-family: "Open Sans", sans-serif;
+	font-weight: 400;
+	font-size: 16px;
+	color: #1e1e1e;
+}
+body, body p, body td, body li {
+	line-height: 1.5;
+}
+h1 {
+	font-size : 40px;
+}
+h2 {
+	font-size : 30px;
+	color: rgb(83,77,149);
+}
+h1, h2, h3 {
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 600;
+	font-style : normal;
+}
+a {
+	text-decoration : none;
+	color : #EA8220;
+}
+a:hover {
+	text-decoration : underline;
+	color : #EA8220;
+}
+p {
+	margin : 10px 0;
+}
+.section {
+	padding-top : 15px;
+	padding-bottom : 30px;
+}
+
+.section>h1, .section>h2 {
+	margin-top : 0px;
+}
+.section.dark {
+	background-color : rgb(20,20,25);
+}
+.section.light {
+	background-color : #eee;
+}
+.section.intro {
+	background-color: rgb(83,77,149);
+	background-repeat: no-repeat;
+	padding-top:150px;
+	padding-bottom:100px;
+	/* Safari 4-5, Chrome 1-9 */
+	background: -webkit-gradient(radial, 50% 80%, 0, center center, 100, from(rgb(83,77,149)), to(rgb(100,33,138)));
+	/* Safari 5.1+, Chrome 10+ */
+	background: -webkit-radial-gradient(50% 80%, circle, rgb(83,77,149), rgb(100,33,138));
+	/* Firefox 3.6+ */
+	background: -moz-radial-gradient(50% 80%, circle, rgb(83,77,149), rgb(100,33,138));
+	/* IE 10 */
+	background: -ms-radial-gradient(50% 80%, circle, rgb(83,77,149), rgb(100,33,138));
+	background: -webkit-radial-gradient(50% 80%, circle, rgb(83,77,149), rgb(100,33,138));
+	
+}
+.section.intro, .section.intro p {
+	color:#fff;
+}
+.section.dark, .section.dark p, .section.dark h2 {
+	color:#fff;
+}
+.section.intro a {
+	color:#fff;
+	text-decoration:underline;
+}
+.section.dark p.code {
+	background-color : #222;
+	border : 1px solid #555;
+	color : #eee;
+}
+p.code {
+	text-align : left;
+	background-color : #f8f8f8;
+	border : 1px solid #ddd;
+	margin : 20px 10px 30px;
+	padding : 5px 15px;
+	font-family: 'Source Code Pro', monospace;
+	font-weight : normal;
+	color : #666;
+	border-radius : 4px;
+}
+
+p.block {
+
+}
+hr {
+	border:0;
+	background:transparent;
+	border-bottom:1px solid #444;
+}
+ul {
+	display : inline-block;
+}
+
+ul, li {
+	text-align : left;
+}
+
+img.screen {
+	margin: 20px 0px;
+	max-width : 100%;    
+	border: 1px solid rgba(0,0,0,.5);
+	border-radius: 5px;
+	box-shadow: 0 0 30px rgba(0,0,0,.3);
+}
+
+div.table {
+	margin-top : 20px;
+	display:inline-block;
+}
+
+div.column {
+	padding-right : 20px;
+	display : table-cell;
+}
+p.lead {
+	font-size: 150%;
+	font-weight: 300;
+}
+
+.fa-big {
+	color: #333;
+	font-size: 32px;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+@media (min-width: 767px) {
+	.downloads li {
+		list-style:none;
+		border-right: 1px dashed #aaa;
+		box-sizing: border-box;
+		padding-left:5px;
+		padding-right:5px;
+		min-height:3em;
+	}
+	.downloads li:last-child {
+		border-right: 0px;
+	}
+	.downloads li .fa, .downloads li .logo {
+		font-size: 30px;
+		text-align:center;
+		margin-top:10px;
+		margin-bottom:10px;
+		display:block;
+	}
+	a[name] {
+		position:absolute;
+		margin-top:-49px;
+	}
+	hr.dotted {
+		border:0;
+		background:transparent;
+		border-bottom:1px dashed #aaa;
+	}
+}
+
+@media (max-width: 767px) {
+	.section {
+		padding-top : 0;
+		padding-bottom : 0;
+	}
+	.section .container {
+		padding-left:30px;
+		padding-right:30px;
+	}
+	.navbar-fixed-top, .navbar-fixed-bottom, .navbar-static-top {
+		margin-left: 0px;
+		margin-right: 0px;
+	}
+	.downloads li .logo img {
+		width:14px;
+		height:14px;
+	}
+	li.divider {
+		display:none;
+	}
+	hr.dotted {
+		display: none;
+	}
+}
+</style>
+<nav class="nav dark">
+		<div class="navbar navbar-fixed-top navbar-inverse">
+			<div class="navbar-inner">
+				<button class="btn btn-navbar" data-target=".nav-collapse" data-toggle="collapse" type="button"><span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button> <a class="brand haxe-logo" href="https://haxe.org/"><img alt="Haxe" height="21" onerror="this.src='http://haxe.org/img/haxe-logo-horizontal-on-dark.png'" src="http://haxe.org/img/haxe-logo-horizontal-on-dark.svg" width="107" /></a>
+				<a class="brand sub ide" href="./">HL</a>
+
+				<div class="nav-collapse collapse">
+				<ul class="nav">
+						<li class="dropdown">
+						<a class="dropdown-toggle" data-toggle="dropdown" href="#">About <b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li>
+								<a href="#compile">Compile &amp; Run</a>
+							</li>
+							<li>
+								<a href="#dual-compilation">Dual compilation</a>
+							</li>
+							<li>
+								<a href="#features">Features</a>
+							</li>
+							<li>
+								<a href="#libraries">Libraries</a>
+							</li>
+							<li>
+								<a href="#performance">Performance</a>
+							</li>
+							</ul>
+						</li>
+						<li>
+							<a href="#download">Download</a>
+						</li>
+						<li>
+							<a href="#case-study">Case study</a>
+						</li>
+					<!-- required submenu  on every subsite -->
+					<li class="divider"></li>
+					<!-- required submenu  on every subsite, put class="active" on   -->
+					<li class="dropdown">
+						<a class="dropdown-toggle" data-toggle="dropdown" href="https://haxe.org/documentation/">Learn Haxe <b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li>
+								<a href="https://haxe.org/documentation/" rel="external">Introduction</a>
+							</li>
+							<li class="divider"></li>
+							<li>
+								<a href="https://haxe.org/manual/" rel="external">Manual</a>
+							</li>
+							<li>
+								<a href="http://api.haxe.org" rel="external">API Documentation</a>
+							</li>
+							<li class="divider"></li>
+							<li>
+								<a href="http://try.haxe.org" rel="external">Try Haxe</a>
+							</li>
+							<li>
+								<a href="https://lib.haxe.org" rel="external">Haxelib</a>
+							</li>
+							<li class="active">
+								<a href="http://code.haxe.org" rel="external">Code Cookbook</a>
+							</li>
+						</ul>
+				</li>
+				<li class=" dropdown">
+					<a class="dropdown-toggle" data-toggle="dropdown" href="#">Connect <b class="caret"></b></a>
+					<ul class="dropdown-menu">
+						<li>
+							<a href="https://github.com/HaxeFoundation" rel="external"><i class="fa fa-github"></i> Github</a>
+						</li>
+						<li>
+							<a href="https://github.com/HaxeFoundation/haxe/issues" rel="external"><i class="fa fa-github"></i> Bug reports</a>
+						</li>
+						<li>
+							<a href="http://stackoverflow.com/questions/tagged/haxe" rel="external"><i class="fa fa-stack-exchange"></i> Stack Overflow</a>
+						</li>
+						<li>
+							<a href="http://groups.google.com/group/haxelang?hl=en" rel="external"><i class="fa fa-envelope-o"></i> Google Groups</a>
+						</li>
+						<li>
+							<a href="http://webchat.freenode.net/?channels=haxe" rel="external nofollow"><i class="fa fa-comments-o"></i> IRC</a>
+						</li>
+						<li>
+							<a href="https://haxe.org/blog" rel="external"><i class="fa fa-rss"></i> Blog</a>
+						</li>
+						<li class="divider"></li>
+						<li>
+							<a href="https://plus.google.com/communities/103302587329918132234" rel="external"><i class="fa fa-google-plus"></i> Google+</a>
+						</li>
+						<li>
+							<a href="https://www.facebook.com/haxe.org/" rel="external"><i class="fa fa-facebook"></i> Facebook</a>
+						</li>
+						<li>
+							<a href="https://twitter.com/search?q=%23haxe" rel="external"><i class="fa fa-twitter"></i> #haxe</a>
+						</li>
+						<li>
+							<a href="https://twitter.com/haxelang" rel="external"><i class="fa fa-twitter"></i> @haxelang</a>
+						</li>
+						<li>
+							<a href="https://twitter.com/haxe_org" rel="external"><i class="fa fa-twitter"></i> @haxe_org</a>
+						</li>
+						<li class="divider"></li>
+						<li>
+							<a href="https://haxe.org/foundation/contact.html" rel="external">Contact</a>
+						</li>
+					</ul>
+				</li>
+			</ul>
+			</div>
+		</div>
+	</div>
+</nav>
+		<div class="section intro">
+			<div class="container">
+
+			<h1>HashLink</h1>
+			<p class="lead">HashLink is a virtual machine for <a href="https://haxe.org">Haxe</a></p>
+
+			</div>
+		</div>
+
+		<a name="compile"></a>
+		<div class="section dark">
+		<div class="container">
+
+			<div class="row">
+			<div class="span6">
+			<h2>Compile</h2>
+
+			<p>
+				HashLink bytecode can be produced by using Haxe compiler (requires upcoming <a href="http://haxe.org/download">Haxe 3.4+</a>)
+			</p>
+
+			<p class="code">
+				haxe -hl output.hl -main MyApp
+			</p>
+
+			</div>
+			<div class="span6">
+			<h2>Run</h2>
+
+			<p>
+				HashLink bytecode can be run using HL/JIT virtual machine.<br/><br/>
+			</p>
+
+			<p class="code">
+				hl output.hl
+			</p>
+
+			</div>
+			</div>
+		</div>
+		</div>
+
+		<a name="dual-compilation"></a>
+		<div class="section">
+		<div class="container">
+		
+			<h2>Dual compilation</h2>
+
+			<p>HashLink bytecode can be either run through HL/JIT virtual machine or converted to C with HL/C:</p>
+
+			<p class="code">
+				haxe -hl output.c -main MyApp<br/>
+				gcc -o myapp -D INCLUDE_ALL -std=c11 output.c -Lhl
+			</p>
+
+			<ul>
+				<li>Use HL/JIT for daily development (fast compilation time)</li>
+				<li>Use HL/C for final release (best performance)</li>
+				<li>HL/C and HL/JIT share same runtime and semantics</li>
+			</ul>
+
+		</div>
+		</div>
+
+		<a name="features"></a>
+		<div class="section light">
+		<div class="container">
+
+			<h2>Features</h2>
+
+			<p>HashLink runtime includes the following features:</p>
+			<ul>
+				<li>Fully compatible with Haxe specification</li>
+				<li>Support file I/O, regular expressions, network, etc.</li>
+				<li>Unicode strings by default</li>
+				<li>Mark-and-not-sweep Garbage Collector</li>
+				<li>x86 and x86-64 HL/C compilation</li>
+				<li>x86 HL/JIT compilation (x86-64 planned)</li>
+			</ul>
+
+		</div>
+		</div>
+
+		<a name="libraries"></a>
+		<div class="section">
+		<div class="container">
+		
+			<h2><i class="fa fa-big fa-battery-full"></i> Libraries</h2>
+
+			<p class="block">
+				While the standard HL runtime provides support for <a href="https://haxe.org/documentation/introduction/stdlib-introduction.html">Haxe standard library</a>, HashLink also provides several libraries that can optionally be used to build HL-specific applications.
+			</p>
+
+			<div class="row">
+			
+			<div class="span4">
+			
+			<h3>FMT Library</h3>
+
+			<p>Provide some binary format support:</p>
+
+			<ul>
+			<li>inflate/deflate ZLIB compression</li>
+			<li>JPG decoding</li>
+			<li>Image scaling/resampling</li>
+			<li>... more to come</li>
+			</ul>
+
+			</div>
+			
+			<div class="span4">
+			
+			<h3>UI Library</h3>
+
+			<p>Provide some OS UI operations:</p>
+
+			<ul>
+			<li>message/alert box</li>
+			<li>scrollable text log with custom buttons</li>
+			<li>async timer</li>
+			<li>(only supported on Windows for now)</li>
+			</ul>
+			
+			</div>
+			
+			<div class="span4">
+
+			<h3>SDL Library</h3>
+
+			<p>Support for the popular <a href="https://www.libsdl.org/">SDL</a> framework:</p>
+
+			<ul>
+			<li>window creation</li>
+			<li>mouse and keyboard events</li>
+			<li>full OpenGL 3.2+ API</li>
+			<li>game controllers</li>
+			<li>native cursors</li>
+			</ul>
+			
+			</div>
+			</div>
+
+		</div>
+		</div>
+
+		<a name="performance"></a>
+		<div class="section light">
+		<div class="container">
+
+			<h2><i class="fa fa-big fa-rocket"></i> Performance</h2>
+
+			<p>
+				HashLink uses advanced optimizations to increase Haxe performance:
+			</p>
+
+			<ul>
+			<li>HL bytecode is strictly typed</li>
+			<li>Fast anonymous objects access using typed "virtuals"</li>
+			<li>Static dispatch of object methods when no override exists</li>
+			<li>Compact memory representation for all values</li>
+			<li>Inference to reduce null field access checks to the minimum (soon)</li>
+			<li>Low level access for pointers, single float, 8 and 16 bits integers</li>
+			</ul>
+
+			<p class="block">
+				Initial benchmark shows that HL/JIT outperforms Adobe AIR and Node/V8 in many cases.
+				Many room for performance improvement exists in HL/JIT to bring it as much near as HL/C as possible.
+			</p>
+
+		</div>
+		</div>
+
+		<a name="download"></a>
+		<div class="section">
+		<div class="container">
+		
+			<h2><i class="fa fa-big fa-download"></i> Download</h2>
+			
+			<p>
+				HashLink can be obtained using one of the following:
+			</p>
+			
+			<ul class="downloads row">
+			<li class="span4"><i class="fa fa-github"></i> <a href="https://github.com/HaxeFoundation/hl">GitHub repository</a> for HL runtime and JIT VM</li>
+			<li class="span4"><i class="fa fa-arrow-circle-o-down"></i>Download <a href="https://github.com/HaxeFoundation/hashlink/releases">latest binary release</a> if you don't want to compile it yourself.</li>
+
+			<li class="span4"><span class="logo"><img src="https://haxe.org/img/haxe-logo.svg" height="30" width="30" /></span> Compiling to HL currently requires <a href="http://haxe.org/download">Haxe 3.4</a></li>
+			</ul>
+		
+		</div>
+		</div>
+	
+
+		<a name="documentation"></a>
+                <div class="section light">
+                <div class="container">
+
+                        <h2>Documentation</h2>
+
+                        <p>
+				HashLink documentation can be accessed using:
+                        </p>
+			<ul>
+			<li>Haxe HL package API (soon)</li>
+			<li><a href="http://haxe.org/blog/hashlink-indepth">HashLink InDepth</a> article series on Haxe blog
+			</ul>
+
+
+                </div>
+                </div>
+	
+		<a name="case-study"></a>
+		<div class="section">
+		<div class="container">
+
+			<h2>Case Study: Northgard</h2>
+
+			<p>
+				<a href="http://northgard.net">Northgard</a> is an upcoming 3D game by <a href="http://shirogames.com/">ShiroGames</a>.
+			</p>
+			<div class="row">
+				<div class="span6">
+					<img src="http://northgard.net/img/02.jpg" class="screen"/>
+				</div>
+				<div class="span6">
+					<p>
+						Initially developed in Haxe with Adobe AIR, it now runs with HL and HLSDL library with the same performance.
+					</p>
+
+					<ul>
+						<li>The code consists in ~1200 classes containing ~11000 methods.</li>
+						<li>Timing has been measured on a low end Intel Q6600 @2.4 Ghz</li>
+						<li>Whole project recompilation takes 18.2 seconds</li>
+						<li>Recompilation with no change takes 2.4 seconds (using <a href="https://haxe.org/manual/cr-completion-server.html">compilation server</a>)</li>
+						<li>Recompilation with partial changes takes 5.8 seconds</li>
+						<li>Memory usage has been reduced from 900MB to 700MB</li>
+					</p>
+				</div>
+				
+			</div>
+
+			
+
+		</div>
+		</div>
+
+
+			
+			
+		<div class="section dark">
+		<div class="container">
+			
+			<h2><i class="fa fa-big fa-globe"></i> Open Source <a class="github-button" href="https://github.com/haxefoundation/haxe" data-icon="octicon-star" data-count-href="/haxefoundation/haxe/stargazers" data-count-api="/repos/haxefoundation/haxe#stargazers_count" data-count-aria-label="# stargazers on GitHub" aria-label="Star haxefoundation/haxe on GitHub">Star</a></h2>
+			
+			<p>
+				HashLink is open source, available under the MIT License.<br/>It is created and supported by <a href="https://haxe.org/foundation">Haxe Foundation</a>
+			</p>
+			
+			
+			<!-- Place this tag in your head or just before your close body tag. -->
+			<script async defer src="https://buttons.github.io/buttons.js"></script>
+			
+			<p>
+				<small><i>Thanks to the following libraries: LibTurboJPEG, LibPCRE, SDL, ZLIB.</i></small>
+			</p>
+		
+			<hr/>
+				
+				Spread the word: &nbsp; &nbsp; &nbsp;
+			<!-- Place this tag where you want the button to render. -->
+			<!-- G+ button code -->
+				<script src="https://apis.google.com/js/platform.js" async="async" defer="defer"></script>
+				<div class="g-plus" data-action="share" data-annotation="bubble" style="display:inline-block"></div>
+				&nbsp; &nbsp;
+				
+				<!-- Twitter button code -->
+				<a href="https://twitter.com/share" class="twitter-share-button" style="display:inline-block" data-show-count="false">Tweet</a>
+				<script async="async" src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+				&nbsp; &nbsp;
+				<!-- Load Facebook SDK for JavaScript -->
+				<div id="fb-root" style="display:inline-block"></div>
+				<script>(function(d, s, id) {
+					var js, fjs = d.getElementsByTagName(s)[0];
+					if (d.getElementById(id)) return;
+					js = d.createElement(s); js.id = id;
+					js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+					fjs.parentNode.insertBefore(js, fjs);
+				}(document, 'script', 'facebook-jssdk'));</script>
+
+				<!-- FB like button code -->
+				<div class="fb-like" data-href="http://hashlink.haxe.org/" style="display:inline-block" data-layout="button_count" data-action="like" data-show-faces="true"></div>
+				
+			
+			
+		</div>
+		</div>
+		
+<script src="https://haxe.org/js/jquery.min.js"></script>
+<script src="https://haxe.org/js/bootstrap.min.js"></script>
+	</body>
+</html>
