@@ -356,13 +356,13 @@
 
 			<p class="code">
 				haxe -hl out/main.c -main MyApp<br/>
-				gcc -o myapp -std=c11 -I out out/main.c -Lhl
+				gcc -O3 -o myapp -std=c11 -I out out/main.c -Lhl [/path/to/required.hdll]
 			</p>
 
 			<ul>
 				<li>Use HL/JIT for daily development (fast compilation time)</li>
 				<li>Use HL/C for final release (best performance)</li>
-				<li>HL/C and HL/JIT share same runtime and semantics</li>
+				<li>HL/C and HL/JIT share same runtime and semantics</li>				
 			</ul>
 
 		</div>
