@@ -355,8 +355,8 @@
 			<p>HashLink bytecode can be either run through HL/JIT virtual machine or converted to C with HL/C:</p>
 
 			<p class="code">
-				haxe -hl output.c -main MyApp<br/>
-				gcc -o myapp -D INCLUDE_ALL -std=c11 output.c -Lhl
+				haxe -hl out/main.c -main MyApp<br/>
+				gcc -o myapp -std=c11 -I out out/main.c -Lhl
 			</p>
 
 			<ul>
