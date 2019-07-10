@@ -399,7 +399,7 @@ p.lead {
 		<p>HashLink bytecode can be either run through HL/JIT virtual machine or converted to C with HL/C:</p>
 		<p class="code">
 			haxe -hl out/main.c -main MyApp<br/>
-			gcc -O3 -o myapp -std=c11 -I out out/main.c -Lhl [/path/to/required.hdll]
+			gcc -O3 -o myapp -std=c11 -I out out/main.c -lhl [-L/path/to/required/hdll]
 		</p>
 		<ul>
 			<li>Use HL/JIT for daily development (fast compilation time)</li>
