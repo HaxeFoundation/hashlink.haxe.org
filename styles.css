@@ -1,0 +1,238 @@
+
+body, p {
+	margin : 0;
+	padding : 0;
+	font-family: "Open Sans", sans-serif;
+	font-weight: 400;
+	font-size: 16px;
+	color: #1e1e1e;
+}
+@media only screen and (min-width: 1200px) {
+	body, p {
+		font-size: 18px;
+	}
+}
+body, body p, body td, body li {
+	line-height: 1.5;
+}
+h1 {
+	font-size : 40px;
+}
+h2 {
+	font-size : 30px;
+	color: rgb(83,77,149);
+}
+h1, h2, h3 {
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 600;
+	font-style : normal;
+}
+a {
+	text-decoration : none;
+	color : #EA8220;
+}
+a:hover {
+	text-decoration : underline;
+	color : #EA8220;
+}
+p {
+	margin : 10px 0;
+}
+.section {
+	padding-top : 15px;
+	padding-bottom : 30px;
+}
+
+.section>h1, .section>h2 {
+	margin-top : 0px;
+}
+.section.dark {
+	background-color : rgb(20,20,25);
+}
+.section.light {
+	background-color : #eee;
+}
+.section.intro {
+	background-color: rgb(83,77,149);
+	background-repeat: no-repeat;
+	padding-top:50px;
+	padding-bottom:25px;
+	/* Safari 4-5, Chrome 1-9 */
+	background: -webkit-gradient(radial, 50% 80%, 0, center center, 100, from(rgb(83,77,149)), to(rgb(100,33,138)));
+	/* Safari 5.1+, Chrome 10+ */
+	background: -webkit-radial-gradient(50% 80%, circle, rgb(83,77,149), rgb(100,33,138));
+	/* Firefox 3.6+ */
+	background: -moz-radial-gradient(50% 80%, circle, rgb(83,77,149), rgb(100,33,138));
+	/* IE 10 */
+	background: -ms-radial-gradient(50% 80%, circle, rgb(83,77,149), rgb(100,33,138));
+	background: -webkit-radial-gradient(50% 80%, circle, rgb(83,77,149), rgb(100,33,138));
+	
+}
+@media only screen and (min-width: 1200px) {
+	.section.intro h1 {
+		font-size:60px;
+		margin-bottom:25px;
+	}
+	.section.intro p.lead {
+		font-size:30px;
+	}
+}
+@media only screen and (max-width: 768px) {
+	.section.intro {
+		padding-top:0px;
+		text-align:center;
+	}
+}
+.section.intro, .section.intro p {
+	color:#fff;
+}
+.section.dark, .section.dark p, .section.dark h2 {
+	color:#fff;
+}
+.section.intro a {
+	color:#fff;
+	text-decoration:underline;
+}
+.section.dark p.code {
+	background-color : #222;
+	border : 1px solid #555;
+	color : #eee;
+}
+p.code {
+	text-align : left;
+	background-color : #f8f8f8;
+	border : 1px solid #ddd;
+	margin : 20px 10px 30px;
+	padding : 5px 15px;
+	font-family: 'Source Code Pro', monospace;
+	font-weight : normal;
+	color : #666;
+	border-radius : 4px;
+}
+
+p.block {
+
+}
+hr {
+	border:0;
+	background:transparent;
+	border-bottom:1px solid #444;
+}
+ul {
+	display : inline-block;
+}
+
+ul, li {
+	text-align : left;
+}
+
+img.screen {
+	margin: 20px 0px;
+	max-width : 100%;    
+	border: 1px solid rgba(0,0,0,.5);
+	border-radius: 5px;
+	box-shadow: 0 0 30px rgba(0,0,0,.3);
+}
+
+div.table {
+	margin-top : 20px;
+	display:inline-block;
+}
+
+div.column {
+	padding-right : 20px;
+	display : table-cell;
+}
+p.lead {
+	font-size: 150%;
+	font-weight: 300;
+}
+
+.fa-big {
+	color: #333;
+	font-size: 32px;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+@media (min-width: 767px) {
+	.downloads li {
+		list-style:none;
+		border-right: 1px dashed #aaa;
+		box-sizing: border-box;
+		padding-left:5px;
+		padding-right:5px;
+		min-height:3em;
+		text-align:center;
+	}
+	.downloads li:last-child {
+		border-right: 0px;
+	}
+	.downloads li .logo {
+		text-align:center;
+		display:block;
+	}
+	.downloads li .logo img {
+		margin-top:10px;
+		margin-bottom:10px;
+	}
+	.downloads li .fa {
+		font-size: 45px;
+		text-align:center;
+		margin-top:10px;
+		margin-bottom:10px;
+		display:block;
+	}
+	a[name] {
+		position:absolute;
+		margin-top:-49px;
+	}
+	hr.dotted {
+		border:0;
+		background:transparent;
+		border-bottom:1px dashed #aaa;
+	}
+}
+
+@media (max-width: 767px) {
+	.section {
+		padding-top : 0;
+		padding-bottom : 0;
+	}
+	.section .container {
+		padding-left:30px;
+		padding-right:30px;
+	}
+	.navbar-fixed-top, .navbar-fixed-bottom, .navbar-static-top {
+		margin-left: 0px;
+		margin-right: 0px;
+	}
+	.downloads li .logo img {
+		width:14px;
+		height:14px;
+	}
+	li.divider {
+		display:none;
+	}
+	hr.dotted {
+		display: none;
+	}
+}
+.flex-row { display:flex;justify-content: center;align-items: center; }
+.flex-col-1 {flex: 1; padding: 10px; }
+.flex-col-2 {flex: 2; padding: 10px; }
+@media only screen and (max-width: 768px) { 
+	.flex-row { display:block; }
+}
+.github-button-container { 
+	position:relative;
+	top:-15px;
+	left:15px;
+}
+a.icon-link {
+	text-decoration:none;
+	color:#000;
+}
+abbr[title] {
+	text-decoration:none;
+}

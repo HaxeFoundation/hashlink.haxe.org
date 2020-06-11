@@ -7,6 +7,7 @@
 <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.css" />
 <link rel="stylesheet" href="https://haxe.org/css/bootstrap.min.css" />
 <link rel="stylesheet" href="https://haxe.org/css/haxe-nav.css" />
+<link rel="stylesheet" href="styles.css" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="description" content="HashLink is a virtual machine for Haxe, created and supported by Haxe Foundation." />
 <!-- Twitter Card data -->
@@ -22,238 +23,6 @@
 <meta property="article:publisher" content="haxe.org" />
 <meta property="article:section" content="technology" />
 
-<style>
-body, p {
-	margin : 0;
-	padding : 0;
-	font-family: "Open Sans", sans-serif;
-	font-weight: 400;
-	font-size: 16px;
-	color: #1e1e1e;
-}
-@media only screen and (min-width: 1200px) {
-	body, p {
-		font-size: 18px;
-	}
-}
-body, body p, body td, body li {
-	line-height: 1.5;
-}
-h1 {
-	font-size : 40px;
-}
-h2 {
-	font-size : 30px;
-	color: rgb(83,77,149);
-}
-h1, h2, h3 {
-	font-family: 'Open Sans', sans-serif;
-	font-weight: 600;
-	font-style : normal;
-}
-a {
-	text-decoration : none;
-	color : #EA8220;
-}
-a:hover {
-	text-decoration : underline;
-	color : #EA8220;
-}
-p {
-	margin : 10px 0;
-}
-.section {
-	padding-top : 15px;
-	padding-bottom : 30px;
-}
-
-.section>h1, .section>h2 {
-	margin-top : 0px;
-}
-.section.dark {
-	background-color : rgb(20,20,25);
-}
-.section.light {
-	background-color : #eee;
-}
-.section.intro {
-	background-color: rgb(83,77,149);
-	background-repeat: no-repeat;
-	padding-top:50px;
-	padding-bottom:25px;
-	/* Safari 4-5, Chrome 1-9 */
-	background: -webkit-gradient(radial, 50% 80%, 0, center center, 100, from(rgb(83,77,149)), to(rgb(100,33,138)));
-	/* Safari 5.1+, Chrome 10+ */
-	background: -webkit-radial-gradient(50% 80%, circle, rgb(83,77,149), rgb(100,33,138));
-	/* Firefox 3.6+ */
-	background: -moz-radial-gradient(50% 80%, circle, rgb(83,77,149), rgb(100,33,138));
-	/* IE 10 */
-	background: -ms-radial-gradient(50% 80%, circle, rgb(83,77,149), rgb(100,33,138));
-	background: -webkit-radial-gradient(50% 80%, circle, rgb(83,77,149), rgb(100,33,138));
-	
-}
-@media only screen and (min-width: 1200px) {
-	.section.intro h1 {
-		font-size:60px;
-		margin-bottom:25px;
-	}
-	.section.intro p.lead {
-		font-size:30px;
-	}
-}
-@media only screen and (max-width: 768px) {
-	.section.intro {
-		padding-top:0px;
-		text-align:center;
-	}
-}
-.section.intro, .section.intro p {
-	color:#fff;
-}
-.section.dark, .section.dark p, .section.dark h2 {
-	color:#fff;
-}
-.section.intro a {
-	color:#fff;
-	text-decoration:underline;
-}
-.section.dark p.code {
-	background-color : #222;
-	border : 1px solid #555;
-	color : #eee;
-}
-p.code {
-	text-align : left;
-	background-color : #f8f8f8;
-	border : 1px solid #ddd;
-	margin : 20px 10px 30px;
-	padding : 5px 15px;
-	font-family: 'Source Code Pro', monospace;
-	font-weight : normal;
-	color : #666;
-	border-radius : 4px;
-}
-
-p.block {
-
-}
-hr {
-	border:0;
-	background:transparent;
-	border-bottom:1px solid #444;
-}
-ul {
-	display : inline-block;
-}
-
-ul, li {
-	text-align : left;
-}
-
-img.screen {
-	margin: 20px 0px;
-	max-width : 100%;    
-	border: 1px solid rgba(0,0,0,.5);
-	border-radius: 5px;
-	box-shadow: 0 0 30px rgba(0,0,0,.3);
-}
-
-div.table {
-	margin-top : 20px;
-	display:inline-block;
-}
-
-div.column {
-	padding-right : 20px;
-	display : table-cell;
-}
-p.lead {
-	font-size: 150%;
-	font-weight: 300;
-}
-
-.fa-big {
-	color: #333;
-	font-size: 32px;
-	padding-left: 10px;
-	padding-right: 10px;
-}
-
-@media (min-width: 767px) {
-	.downloads li {
-		list-style:none;
-		border-right: 1px dashed #aaa;
-		box-sizing: border-box;
-		padding-left:5px;
-		padding-right:5px;
-		min-height:3em;
-		text-align:center;
-	}
-	.downloads li:last-child {
-		border-right: 0px;
-	}
-	.downloads li .logo {
-		text-align:center;
-		display:block;
-	}
-	.downloads li .logo img {
-		margin-top:10px;
-		margin-bottom:10px;
-	}
-	.downloads li .fa {
-		font-size: 45px;
-		text-align:center;
-		margin-top:10px;
-		margin-bottom:10px;
-		display:block;
-	}
-	a[name] {
-		position:absolute;
-		margin-top:-49px;
-	}
-	hr.dotted {
-		border:0;
-		background:transparent;
-		border-bottom:1px dashed #aaa;
-	}
-}
-
-@media (max-width: 767px) {
-	.section {
-		padding-top : 0;
-		padding-bottom : 0;
-	}
-	.section .container {
-		padding-left:30px;
-		padding-right:30px;
-	}
-	.navbar-fixed-top, .navbar-fixed-bottom, .navbar-static-top {
-		margin-left: 0px;
-		margin-right: 0px;
-	}
-	.downloads li .logo img {
-		width:14px;
-		height:14px;
-	}
-	li.divider {
-		display:none;
-	}
-	hr.dotted {
-		display: none;
-	}
-}
-.flex-row { display:flex;justify-content: center;align-items: center; }
-.flex-col-1 {flex: 1; padding: 10px; }
-.flex-col-2 {flex: 2; padding: 10px; }
-@media only screen and (max-width: 768px) { 
-	.flex-row { display:block; }
-}
-.github-button-container { 
-	position:relative;
-	top:-15px;
-	left:15px;
-}
-</style>
 </head>
 <body>
 <nav class="nav dark">
@@ -432,14 +201,14 @@ p.lead {
 	<div class="container">
 		<h2><i class="fa fa-big fa-battery-full"></i> Libraries</h2>
 		<p class="block">
-			While the standard HL runtime provides support for <a href="https://haxe.org/documentation/introduction/stdlib-introduction.html">Haxe standard library</a>, HashLink also provides several libraries that can optionally be used to build HL-specific applications.
+			While the standard <abbr title="HashLink">HL</abbr> runtime provides support for <a href="https://haxe.org/documentation/introduction/stdlib-introduction.html">Haxe standard library</a>, HashLink also provides several libraries that can optionally be used to build HL-specific applications.
 		</p>
 		<div class="row">
 			<div class="span4">
 				<h3>FMT Library</h3>
-				<p>Provide some binary format support:</p>
+				<p>Provide binary format support:</p>
 				<ul>
-					<li>inflate/deflate ZLIB compression</li>
+					<li>Inflate/deflate ZLIB compression</li>
 					<li>JPG decoding</li>
 					<li>Image scaling/resampling</li>
 					<li>... more to come</li>
@@ -447,11 +216,11 @@ p.lead {
 			</div>
 			<div class="span4">
 				<h3>UI Library</h3>
-				<p>Provide some OS UI operations:</p>
+				<p>Provide OS UI operations:</p>
 				<ul>
-					<li>message/alert box</li>
-					<li>scrollable text log with custom buttons</li>
-					<li>async timer</li>
+					<li>Message/alert box</li>
+					<li>Scrollable text log with custom buttons</li>
+					<li>Async timer</li>
 					<li>(only supported on Windows for now)</li>
 				</ul>
 			</div>
@@ -459,11 +228,11 @@ p.lead {
 				<h3>SDL Library</h3>
 				<p>Support for the popular <a href="https://www.libsdl.org/">SDL</a> framework:</p>
 				<ul>
-					<li>window creation</li>
-					<li>mouse and keyboard events</li>
-					<li>full OpenGL 3.2+ API</li>
-					<li>game controllers</li>
-					<li>native cursors</li>
+					<li>Window creation</li>
+					<li>Mouse and keyboard events</li>
+					<li>Full OpenGL 3.2+ API</li>
+					<li>Game controllers</li>
+					<li>Native cursors</li>
 				</ul>
 			</div>
 		</div>
@@ -498,9 +267,9 @@ p.lead {
 		<h2><i class="fa fa-big fa-download"></i> Download</h2>
 		<p>HashLink can be obtained using one of the following:</p>
 		<ul class="downloads row">
-		<li class="span4"><i class="fa fa-arrow-circle-o-down"></i>Download <a href="https://github.com/HaxeFoundation/hashlink/releases">latest binary release</a><br>(Windows / Linux)</li>
-		<li class="span4"><i class="fa fa-github"></i> <a href="https://github.com/HaxeFoundation/hl">GitHub repository</a><br>for HL runtime and JIT VM</li>
-		<li class="span4"><span class="logo"><img alt="Haxe logo" src="https://haxe.org/img/haxe-logo.svg" height="40" width="40" /></span> Compiling to HL requires <a href="https://haxe.org/download">Haxe 3.4+</a></li>
+		<li class="span4"><a href="https://github.com/HaxeFoundation/hashlink/releases" class="icon-link"><i class="fa fa-arrow-circle-o-down"></i></a>Download <a href="https://github.com/HaxeFoundation/hashlink/releases">latest binary release</a><br>(Windows / Linux)</li>
+		<li class="span4"><a href="https://github.com/HaxeFoundation/hashlink/" class="icon-link"><i class="fa fa-github"></i></a> <a href="https://github.com/HaxeFoundation/hashlink/">GitHub repository</a><br>for HL runtime and JIT VM</li>
+		<li class="span4"><a href="https://haxe.org/download" class="icon-link"><span class="logo"><img alt="Haxe logo" src="https://haxe.org/img/haxe-logo.svg" height="40" width="40" /></span></a>Compiling to HL requires <a href="https://haxe.org/download">Haxe 3.4+</a></li>
 		</ul>
 	</div>
 </div>
@@ -512,6 +281,9 @@ p.lead {
 		<h2>Documentation</h2>
 		<p> HashLink documentation can be accessed using:</p>
 		<ul>
+			<li><a href="https://haxe.org/manual/target-hl-getting-started.html">Getting started with Haxe/HashLink</a></li>
+			<li><a href="https://haxe.org/manual/target-hl-c-compilation.html">HashLink/C Compilation</a></li>
+			<li><a href="https://api.haxe.org/hl/">API Documentation</a></li>
 			<li><a href="https://github.com/HaxeFoundation/hashlink/wiki">HashLink Wiki</a></li>
 		<li>HashLink In Depth article series on Haxe blog:<br/>
 			<ul>
@@ -529,7 +301,7 @@ p.lead {
 	<div class="container">
 		<h2>Case Study: Northgard</h2>
 		<p>
-			<a href="http://northgard.net">Northgard</a> is an upcoming 3D game by <a href="http://shirogames.com/">ShiroGames</a>.
+			<a href="http://northgard.net">Northgard</a> is a 3D game created by <a href="https://shirogames.com/">ShiroGames</a>.
 		</p>
 		<div class="row">
 			<div class="span6">
@@ -546,6 +318,8 @@ p.lead {
 					<li>Recompilation with no change takes 2.4 seconds (using <a href="https://haxe.org/manual/cr-completion-server.html">compilation server</a>)</li>
 					<li>Recompilation with partial changes takes 5.8 seconds</li>
 					<li>Memory usage has been reduced from 900MB to 700MB</li>
+					<li>Northgard is build using the open-source <a href="https://heaps.io/">Heaps.io</a> game engine</li>
+					<li>Northgard is available on Steam for <a href="https://store.steampowered.com/app/1223060/Northgard__Himminbrjotir_Clan_of_the_Ox/" "Northgard for desktop">PC, Mac OS X and Linux</a> but also on consoles <a href="https://www.amazon.fr/Merge-Games-Northgard/dp/B07SZ6SYMY" title="Northgard for consoles">Nintendo Switch, PS4 and Xbox One</a></li>
 				</ul>
 			</div>
 		</div>
@@ -558,8 +332,8 @@ p.lead {
 			<h2><i class="fa fa-big fa-globe"></i> Open Source <span class="github-button-container"><a class="github-button" href="https://github.com/HaxeFoundation/hashlink" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star HaxeFoundation/hashlink on GitHub">Star</a></span></h2>
 			<script async defer src="https://buttons.github.io/buttons.js"></script>
 			
-			<img src="hashlink.svg" width="180" style="float:left; filter: grayscale(100%) brightness(65%) drop-shadow(0 0 100px darkgray);"/>
-			<p>HashLink is open source, available under the MIT License.<br/>It is created and supported by <a href="https://haxe.org/foundation">Haxe Foundation</a></p>
+			<img src="hashlink.svg" width="180" style="float:left; filter: grayscale(100%) brightness(65%) drop-shadow(0 0 100px darkgray); opacity: 0.75;"/>
+			<p>HashLink is open source, available under the <a href="https://github.com/HaxeFoundation/hashlink/blob/master/LICENSE">MIT License</a>.<br/>It is created and supported by <a href="https://haxe.org/foundation">Haxe Foundation</a></p>
 			<p><small><i>Thanks to the following libraries: LibTurboJPEG, LibPCRE, SDL, ZLIB.</i></small></p>
 		
 			<hr/>
